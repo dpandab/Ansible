@@ -7,4 +7,5 @@
     - name: displaying msg
       debug: msg="My name is Hello"
 
-
+    - name: installing ntpd
+      yum: name='ntp' state=present
