@@ -1,0 +1,10 @@
+---
+- hosts: Local
+  user: root
+  become: True
+  gather_facts: no
+  tasks:
+    - name: displaying msg
+      debug: msg="My name is Hello"
+
+
