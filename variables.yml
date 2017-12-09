@@ -1,0 +1,27 @@
+---
+- hosts: Local
+  user: root
+  become: True
+  gather_facts: True
+  vars:
+    myname: "Diptikanta"
+    filename: "test.txt"
+    age: 32
+    epic: False
+  tasks:
+    - name: display my name
+      debug: msg="myname is {{ myname }}"
+
+    - name: create a file
+      file: path="/tmp/{{filename}}" state=touch
+    - name: Displaying my neme
+      debug: msg="my nem is {{myname}} and my age is {{age}}"
+    - name: Displaying message only true
+      debug: msg="i am {{epic}}"
+      when: epic
+    - name: allow based on operation system
+      debug: msg="i am redhat"
+      when: ansible_os_family == "RedHat"
+    - name: allow based on operation system
+      debug: msg="i am ubuntu"
+      when: ansible_os_family == "Debian"
