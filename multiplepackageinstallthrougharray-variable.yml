@@ -1,0 +1,18 @@
+---
+- hosts: Local
+  user: root
+  become: true
+  gather_facts: True
+
+  vars: 
+    myname: "Diptikanta"
+    age: 32
+    epic: ture
+      
+      
+  tasks:
+    - name: Installing multiplace packages
+      yum: name={{ item }} state=present
+      with_items: 
+        - httpd
+        - ntp

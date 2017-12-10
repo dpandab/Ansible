@@ -1,0 +1,27 @@
+---
+- hosts: Local
+  user: root
+  become: true
+  gather_facts: True
+
+  vars: 
+    myname: "Diptikanta"
+    age: 32
+    epic: ture
+    users:
+       dipti:
+         name: "Diptikanta"
+         age: 35
+         salary: 10
+       chinu:
+         name: "CHinu"
+         age: 35
+         salary: 10
+      
+      
+  tasks:
+    - name: working with HASH variables 
+      debug: msg="Users details are {{ item.key }} {{ item.value.name }} {{ item.value.salary}} {{ item.value.age }}"
+      with_dict: "{{ users }}" 
+        
+        

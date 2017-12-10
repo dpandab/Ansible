@@ -1,0 +1,20 @@
+---
+- hosts: Local
+  user: root
+  become: true
+  gather_facts: True
+
+  vars: 
+    myname: "Diptikanta"
+    age: 32
+    epic: ture
+    numbers:
+      - 10
+      - 20
+      - 30
+      - 40
+  tasks:
+    - name: Looping arrya element
+      debug: msg=" This is a number"  "{{ item }}"
+      with_items: "{{ numbers }}"
+      when: item > 10
