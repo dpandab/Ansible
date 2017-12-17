@@ -1,0 +1,12 @@
+---
+- hosts: Local
+  #become: true
+  #remote_user: devops
+  vars: 
+    port: 8080
+  tasks:
+  - name: copy httpd.conf
+    template: src=/root/Ansible/httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
+    notify: restart httpd
+  - name: restart httpd
+    service: name=httpd state=restarted 

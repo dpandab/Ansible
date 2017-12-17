@@ -1,0 +1,15 @@
+---
+- hosts: Local
+  user: root
+  become: True
+  gather_facts: True
+  vars:
+    myname: "Diptikanta"
+    filename: "test.txt"
+    age: 32
+    epic: False
+  tasks:
+    - name : testing template test
+      template: src=/root/Ansible/test.j2 dest=/tmp/test
+    - name: host file
+      template: src=/root/Ansible/host.j2 dest=/etc/hosts
